@@ -1,0 +1,39 @@
+#include <iostream>
+#include <Windows.h>
+#include <ctime>
+#include <string>
+constexpr auto RED = "\033[31m";
+constexpr auto RESET = "\033[0m";
+constexpr auto GREEN = "\033[32m";
+constexpr auto YELLOW = "\033[33m";
+constexpr auto BLUE = "\033[34m";
+using namespace std;
+int main() {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    srand(time(NULL));
+    string a;
+    do {
+        const int SIZE = 7;
+        string arr[SIZE] = { "да", "нет", "возможно", "точно нет", "точно да", "подумай сам", "ебу?" };
+        cout << BLUE << "Задай вопрос.Любой.\n" << RESET;
+        string i;
+        cin.ignore();
+        getline(cin, i);
+        cout << YELLOW << arr[rand() % 7] << "\n";
+        cout << GREEN << "Желаешь продолжить?(Да или Нет)\n" << RESET;
+        cin >> a;
+        if (a[0] == 'Н' || a[0]=='н') {
+            cout << "Ну, нет - так нет" << endl;
+        }
+        else if (a[0] == 'Д' || a[0] == 'д') {
+            cout << endl;
+        }
+        else  {
+            cout << "и что мне делать с этой информацией?... " << endl;
+        }
+    } while (a[0] == 'Д' || a[0] == 'д');
+    system("pause");
+    return 0;
+
+}
